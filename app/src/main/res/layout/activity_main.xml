@@ -40,7 +40,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_main_selfDestruct"
-        app:layout_constraintVertical_bias="0.68" />
+        app:layout_constraintVertical_bias="0.694" />
 
     <ImageView
         android:id="@+id/imageView_main_light"
@@ -52,5 +52,59 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_compass" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_main_files"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="314dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toTopOf="@+id/switch_main_useless"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="408dp"
+        android:layout_height="725dp"
+        android:layout_marginBottom="26dp"
+        app:layout_constraintBottom_toTopOf="@+id/progressBar_main_files"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView_main_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/switch_main_useless"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar_main_files" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_main_lookBusyUi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="progressBar_main_files,textView_main_progress" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_main_ui"
+        android:layout_width="194dp"
+        android:layout_height="228dp"
+        app:constraint_referenced_ids="switch_main_useless,button_main_selfDestruct,button_main_lookBusy,imageView_main_light,frameLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.81" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
