@@ -65,7 +65,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/layout_main_flash"
         android:layout_width="408dp"
         android:layout_height="725dp"
         android:layout_marginBottom="26dp"
@@ -99,7 +99,7 @@
         android:id="@+id/group_main_ui"
         android:layout_width="194dp"
         android:layout_height="228dp"
-        app:constraint_referenced_ids="switch_main_useless,button_main_selfDestruct,button_main_lookBusy,imageView_main_light,frameLayout"
+        app:constraint_referenced_ids="switch_main_useless,button_main_selfDestruct,button_main_lookBusy,imageView_main_light,layout_main_flash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

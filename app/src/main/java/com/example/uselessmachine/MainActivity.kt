@@ -7,10 +7,6 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
 import android.widget.*
-import org.w3c.dom.Text
-import java.security.acl.Group
-import java.util.concurrent.CountDownLatch
-import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,27 +52,40 @@ class MainActivity : AppCompatActivity() {
         }
 
         selfDestructButton.setOnClickListener {
+            var countDownInterval = 1000
+            var time = 10000
             var swap = 0
-            val destructTimer = object : CountDownTimer(10000, 500) {
+            var frequency = 4
+            val destructTimer = object : CountDownTimer(time.toLong(), countDownInterval.toLong()) {
                 override fun onTick(p0: Long) {
                     swap++
-                    selfDestructButton.text = "" + p0/1000
-                    if(swap%2==0) {
-                        lightImageView.setColorFilter(Color.RED, PorterDuff.Mode.ADD)
-                        background.setBackgroundColor(Color.WHITE)
+                    if(p0<=5000){
+                        frequency = 2
+                    }
+                    selfDestructButton.text = "Count down to extinction: " + (p0/1000 + 1)
+                    if(swap%frequency==0) {
+                        background.visibility = View.VISIBLE
+                        background.setBackgroundColor(Color.RED)
                     }
                     else{
-                        lightImageView.setColorFilter(Color.WHITE, PorterDuff.Mode.ADD)
-                        background.setBackgroundColor(Color.RED)
+                        background.visibility = View.INVISIBLE
+                        lightImageView.setColorFilter(Color.RED, PorterDuff.Mode.ADD)
+
                     }
                 }
 
                 override fun onFinish() {
                     finish()
+                    lookBusyButton.visibility = View.VISIBLE
+                    uselessSwitch.visibility = View.VISIBLE
                 }
             }
+            lookBusyButton.visibility = View.INVISIBLE
+            uselessSwitch.visibility = View.INVISIBLE
             destructTimer.start()
+            selfDestructButton.isEnabled = false
         }
+
 
         lookBusyButton.setOnClickListener {
             groupMainUi.visibility = View.INVISIBLE
@@ -129,7 +138,7 @@ class MainActivity : AppCompatActivity() {
         progressText = findViewById(R.id.textView_main_progress)
         groupMainUi = findViewById(R.id.group_main_ui)
         groupBusyUi = findViewById(R.id.group_main_lookBusyUi)
-        background = findViewById(R.id.frameLayout)
+        background = findViewById(R.id.layout_main_flash)
         groupMainUi.visibility = View.VISIBLE
         groupBusyUi.visibility = View.INVISIBLE
         fileLoaderProgressBar = findViewById(R.id.progressBar_main_files)
